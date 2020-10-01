@@ -13,9 +13,10 @@ from cogs import player, match, team, oauth, help
 load_dotenv()
 
 TOKEN = os.getenv('DISCORD_TOKEN')
-localedir = './locale'
-translate = gettext.translation('hatcord', localedir, fallback=True)
-_ = translate.gettext
+localedir = './locales'
+fi = gettext.translation('hatcord', localedir, fallback=True, languages=['fi:en'])
+fi.install()
+_ = fi.gettext
 
 bot = commands.Bot(command_prefix='ht-', case_insensitive=True)
 bot.remove_command('help')
@@ -34,7 +35,7 @@ async def on_ready():
     """
 
     await bot.wait_until_ready()
-    print(bot.user.name + " connected to guilds:")
+    print(bot.user.name + _(" connected to guilds:"))
     for guild in bot.guilds:
         print(guild.name)
 
@@ -51,14 +52,13 @@ async def on_message(message):
     # Process commands
     await bot.process_commands(message)
 
+
 @bot.event
 async def on_command(ctx):
     # TODO: logging
     # TODO: switch to user language, default to EN
 
-
-
-
+    return
 
 
 bot.run(TOKEN)
