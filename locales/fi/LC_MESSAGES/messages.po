@@ -13,5 +13,5 @@ msgstr "!apua"
 
 #: hatcord.py:38
 msgid " connected to guilds:"
-msgstr ""
+msgstr " yhdistetty servereille:"
 
