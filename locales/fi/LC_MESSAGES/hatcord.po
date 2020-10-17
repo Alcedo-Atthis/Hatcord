@@ -15,3 +15,11 @@ msgstr "!apua"
 msgid " connected to guilds:"
 msgstr " yhdistetty servereille:"
 
+#: cogs/oauth.py:50
+msgid "Click here and sign in with your Hattrick credentials"
+msgstr "Klikkaa tästä ja kirjaudu sisään Hattrick-tunnuksillasi"
+
+#: cogs/oauth.py:52
+msgid "Finalize authorization by typing `!verify <auth token>`, for example `!verify 1234567890`"
+msgstr "Viimeistele valtuutus kirjoittamalla `!verify <vahvistuskoodi>`, esimerkiksi `!verify 1234567890`"
+
