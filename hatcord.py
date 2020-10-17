@@ -1,11 +1,8 @@
+import gettext
 import os
-import sys
-import urllib.parse
 
 import discord
-import gettext
 from discord.ext import commands
-import xmltodict
 from dotenv import load_dotenv
 
 from cogs import player, match, team, oauth, help
@@ -13,10 +10,7 @@ from cogs import player, match, team, oauth, help
 load_dotenv()
 
 TOKEN = os.getenv('DISCORD_TOKEN')
-localedir = './locales'
-fi = gettext.translation('hatcord', localedir, fallback=True, languages=['fi:en'])
-fi.install()
-_ = fi.gettext
+
 
 bot = commands.Bot(command_prefix='ht-', case_insensitive=True)
 bot.remove_command('help')
@@ -35,18 +29,18 @@ async def on_ready():
     """
 
     await bot.wait_until_ready()
-    print(bot.user.name + _(" connected to guilds:"))
+    print(bot.user.name + " connected to guilds:")
     for guild in bot.guilds:
         print(guild.name)
 
     # Set bot status to 'Listening to !help'
-    activity = discord.Activity(name=_('!help'), type=discord.ActivityType.listening)
+    activity = discord.Activity(name='!help', type=discord.ActivityType.listening)
     await bot.change_presence(activity=activity)
 
 
 @bot.event
 async def on_message(message):
-    # disregard messages sent by the bot
+    # Disregard messages sent by the bot
     if message.author.id == bot.user.id:
         return
     # Process commands
