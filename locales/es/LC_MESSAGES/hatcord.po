@@ -15,3 +15,11 @@ msgstr "!ayuda"
 msgid " connected to guilds:"
 msgstr ""
 
+#: cogs/oauth.py:50
+msgid "Click here and sign in with your Hattrick credentials"
+msgstr "Has click aquí e inicia sesión con tus credenciales de Hattrick"
+
+#: cogs/oauth.py:52
+msgid "Finalize authorization by typing `!verify <auth token>`, for example `!verify 1234567890`"
+msgstr "Finaliza la autorización escribiendo `!verify <simbólica de acesso>`, por ejemplo `!verify 1234567890`"
+
