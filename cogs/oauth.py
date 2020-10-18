@@ -1,12 +1,10 @@
 import gettext
-
 import discord
 from discord.ext import commands
 from discord.ext.commands import Bot
 
 localedir = 'locales'
 _ = gettext.gettext
-
 
 class OauthCog(commands.Cog):
     def __init__(self, bot: Bot):
@@ -20,7 +18,9 @@ class OauthCog(commands.Cog):
         # TODO: user_lang = getUserLanguage(ctx.member.id)
         lang = gettext.translation('oauth', localedir, fallback=False, languages=[user_lang])
         global _
+        lang.install()
         _ = lang.gettext
+
 
         return
 
@@ -33,7 +33,7 @@ class OauthCog(commands.Cog):
 
         :param ctx:
         """
-
+        global _
         # TODO: log new user auth
         # author_id = ctx.author.id
         # resources = oauth.initiate()
@@ -48,7 +48,7 @@ class OauthCog(commands.Cog):
 
         embed_auth = discord.Embed(title="👉  {}  👈"
                                    .format(_('Click here and sign in with your Hattrick credentials')),
-                                   url='localhost', description=
+                                   url='https://www.hattrick.org/', description=
                                    _("Finalize authorization by typing `!verify <auth token>`,"
                                      " for example `!verify 1234567890`"))
 
