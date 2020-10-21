@@ -6,6 +6,19 @@ from discord.ext.commands import Bot
 localedir = 'locales'
 _ = gettext.gettext
 
+
+def set_lang():
+    async def predicate(ctx):
+        user_lang = 'fi'
+        # TODO: user_lang = getUserLanguage(ctx.member.id)
+        lang = gettext.translation('hatcord', localedir, fallback=False, languages=[user_lang])
+        global _
+        lang.install()
+        _ = lang.gettext
+        return True
+    return commands.check(predicate)
+
+
 class OauthCog(commands.Cog):
     def __init__(self, bot: Bot):
         self.bot = bot
@@ -13,17 +26,10 @@ class OauthCog(commands.Cog):
     @commands.Cog.listener()
     async def on_command(self, ctx):
         # TODO: logging
-
-        user_lang = 'fi'
-        # TODO: user_lang = getUserLanguage(ctx.member.id)
-        lang = gettext.translation('hatcord', localedir, fallback=False, languages=[user_lang])
-        global _
-        lang.install()
-        _ = lang.gettext
-
         return
 
     @commands.command(name='auth', hidden=True)
+    @set_lang()
     async def auth(self, ctx):
         """
         Authorize bot to access Hattrick data
