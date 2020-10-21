@@ -16,11 +16,10 @@ class OauthCog(commands.Cog):
 
         user_lang = 'fi'
         # TODO: user_lang = getUserLanguage(ctx.member.id)
-        lang = gettext.translation('oauth', localedir, fallback=False, languages=[user_lang])
+        lang = gettext.translation('hatcord', localedir, fallback=False, languages=[user_lang])
         global _
         lang.install()
         _ = lang.gettext
-
 
         return
 
